@@ -1,11 +1,15 @@
 import java.io.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FilesManager {
 
 
     private static final String DISHES_FILE = "dishes.txt";
     private static final String ORDERS_FILE = "orders";
+
+    private static final Logger logger = Logger.getLogger(FilesManager.class.getName());
 
     public static void saveDate (List<Dish> dishes, List<Order> orders) {
         saveDishes(dishes);
@@ -14,7 +18,7 @@ public class FilesManager {
     }
 
 
-    public static void loadData (List<Dish> dishes, List<Order> orders) {
+    public static void loadData (List<Dish> dishes, List<Order> orders) throws FileLoadException {
         loadDishes(dishes);
         loadOrders(orders, dishes);
     }
@@ -25,7 +29,7 @@ public class FilesManager {
                 writer.println(dish.getName() + "," + dish.getPrice());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to save dishes from file", e);
         }
     }
 
@@ -39,11 +43,12 @@ public class FilesManager {
                         + "," + order.isPaid());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to save orders from file", e);
+
         }
     }
 
-    private static void loadDishes(List<Dish> dishes) {
+    private static void loadDishes(List<Dish> dishes) throws FileLoadException {
         try (BufferedReader reader = new BufferedReader(new FileReader(DISHES_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -54,11 +59,11 @@ public class FilesManager {
                 dishes.add(new Dish(id, name, price));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new FileLoadException("Chyba při načítání seznamu jídel ze souboru: " + e.getMessage());
         }
     }
 
-    private static void loadOrders(List<Order> orders, List<Dish> dishes) {
+    private static void loadOrders(List<Order> orders, List<Dish> dishes) throws FileLoadException {
         try (BufferedReader reader = new BufferedReader(new FileReader(ORDERS_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -72,7 +77,7 @@ public class FilesManager {
                 orders.add(new Order(dish, quantity, orderedTime, fulfilmentTime, isPaid));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new FileLoadException("Chyba při načítání seznamu jídel ze souboru: " + e.getMessage());
         }
     }
 
