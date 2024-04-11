@@ -9,6 +9,20 @@ public class Main {
 
 
 
+        try {
+            FilesManager.loadData(dishes, orders);
+            System.out.println("Data byla úspěšně načtena ze souborů.");
+        } catch (FileLoadException e) {
+            System.err.println("Chyba při načítání dat ze souborů: " + e.getMessage());
+            return; //
+        }
 
+
+
+
+        FilesManager.saveData(dishes, orders);
+        System.out.println("Data byla úspěšně uložena do souborů.");
     }
+
+
 }

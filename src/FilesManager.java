@@ -11,7 +11,7 @@ public class FilesManager {
 
     private static final Logger logger = Logger.getLogger(FilesManager.class.getName());
 
-    public static void saveDate (List<Dish> dishes, List<Order> orders) {
+    public static void saveData (List<Dish> dishes, List<Order> orders) {
         saveDishes(dishes);
         saveOrders(orders);
 
