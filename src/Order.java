@@ -7,17 +7,24 @@ public class Order {
 
 
     private Dish dish;
+
+    private int id;
     private int quantity;
     private LocalDateTime orderedTime;
     private LocalDateTime fulfilmentTime;
     private boolean isPaid;
 
-    public Order(Dish dish, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid) {
+    public Order(Dish dish, int id, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid) {
         this.dish = dish;
+        this.id = id;
         this.quantity = quantity;
         this.orderedTime = orderedTime;
         this.fulfilmentTime = fulfilmentTime;
         this.isPaid = isPaid;
+    }
+
+    public Order(Dish dish, int quantity, long orderedTime, long fulfilmentTime, boolean isPaid) {
+
     }
 
     public Dish getDish() {
@@ -61,6 +68,14 @@ public class Order {
     }
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void updateOrder(int newQuantity) {
         if (newQuantity > 0) {
             this.quantity = newQuantity;
@@ -85,17 +100,17 @@ public class Order {
     }
 
 
-//   public String toString() {
-//       return "Order{" +
-//               "dish=" + dish.getName() +
-//               ", quantity=" + quantity +
-//               ", orderedTime=" + orderedTime +
-//               ", fulfilmentTime=" + fulfilmentTime +
-//               ", isPaid=" + isPaid +
-//               '}';
+       public String toString() {
+           return "Order{" +
+                   "dish=" + dish.getName() +
+                   ", quantity=" + quantity +
+                   ", orderedTime=" + orderedTime +
+                   ", fulfilmentTime=" + fulfilmentTime +
+                   ", isPaid=" + isPaid +
+                   '}';
 
 
-//   }
+       }
 
 
 

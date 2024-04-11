@@ -1,12 +1,14 @@
 public class Dish {
 
     private String name;
+    private int id;
     private double price;
     private int preparationTiome;
     private String photoUrl;
 
-    public Dish(String name, double price, int preparationTiome, String photoUrl) {
+    public Dish(String name, double price, int preparationTime, String photoUrl) {
         this.name = name;
+        this.id = id;
         this.price = price;
         if (preparationTiome >= 0) {
             this.preparationTiome = preparationTiome;
@@ -14,6 +16,10 @@ public class Dish {
             throw new IllegalArgumentException("Preparation time can't be a negative number");
         }
         this.photoUrl = photoUrl;
+    }
+
+    public Dish(int id, String name, double price) {
+
     }
 
     public String getName() {
@@ -49,5 +55,11 @@ public class Dish {
     }
 
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }
