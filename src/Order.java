@@ -1,9 +1,14 @@
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Order {
+
+    private ArrayList<Dish> orderedDishes;
 
 
     private Dish dish;
@@ -14,13 +19,21 @@ public class Order {
     private LocalDateTime fulfilmentTime;
     private boolean isPaid;
 
-    public Order(Dish dish, int id, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid) {
+    private boolean isFinished;
+
+    private int tableNumber;
+
+
+    public Order(ArrayList<Dish> orderedDishes, Dish dish, int id, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid, boolean isFinished, int tableNumber) {
+        this.orderedDishes = orderedDishes;
         this.dish = dish;
         this.id = id;
         this.quantity = quantity;
         this.orderedTime = orderedTime;
         this.fulfilmentTime = fulfilmentTime;
         this.isPaid = isPaid;
+        this.isFinished = isFinished;
+        this.tableNumber = tableNumber;
     }
 
     public Order(Dish dish, int quantity, long orderedTime, long fulfilmentTime, boolean isPaid) {
@@ -76,6 +89,14 @@ public class Order {
         this.id = id;
     }
 
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+
     public void updateOrder(int newQuantity) {
         if (newQuantity > 0) {
             this.quantity = newQuantity;
@@ -108,13 +129,38 @@ public class Order {
                    ", fulfilmentTime=" + fulfilmentTime +
                    ", isPaid=" + isPaid +
                    '}';
-
-
        }
 
+    public long getProcessingTimeInMinutes() {
+        Duration duration = Duration.between(orderedTime, fulfilmentTime);
+        return duration.toMinutes();
+    }
+
+    public ArrayList<Dish> getOrderedDishes() {
+        return orderedDishes;
+    }
 
 
-}
+    public String getFormattedOrder() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault());
+        StringBuilder formattedOrder = new StringBuilder();
+
+        formattedOrder.append(id).append(". ").append(dish.getName()).append(" ").append(quantity).append("x (").append(dish.getPrice() * quantity).append(" Kč):    ")
+                .append(orderedTime.format(formatter)).append("-").append(fulfilmentTime != null ? fulfilmentTime.format(formatter) : "").append("\t")
+                .append(isPaid ? "zaplaceno" : "").append("\n");
+
+        return formattedOrder.toString();
+    }
+
+
+    public int getTableNumber() {
+       return tableNumber;
+    }
+
+
+
+    }
+
 
 
 
