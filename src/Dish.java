@@ -6,7 +6,7 @@ public class Dish {
     private int preparationTiome;
     private String photoUrl;
 
-    public Dish(String name, double price, int preparationTime, String photoUrl) {
+    public Dish(String name, int id, double price, int preparationTime, String photoUrl) {
         this.name = name;
         this.id = id;
         this.price = price;

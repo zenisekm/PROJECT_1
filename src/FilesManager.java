@@ -93,6 +93,16 @@ public class FilesManager {
 
 }
 
+    public static void loadInitialState(List<Dish> dishes, List<Order> orders) {
+        try {
+            loadData(dishes, orders);
+            System.out.println("Data byla úspěšně načtena ze souborů.");
+        } catch (FileLoadException e) {
+            System.err.println("Chyba při načítání dat ze souborů: " + e.getMessage());
+
+        }
+    }
+
 
 
 }
