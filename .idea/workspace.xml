@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a1f5cf1-bdcb-4abe-95d2-d58bf1bcdc42" name="Changes" comment="PROJECT #1 PŘIPRAVENO NA TESTOVACÍ DATA&#10;&#10;&#10;Vytvořeny podmínky.">
+    <list default="true" id="3a1f5cf1-bdcb-4abe-95d2-d58bf1bcdc42" name="Changes" comment="PROJECT #1 ZAČÁTEK TESTOVACÍCH DAT. &#10;&#10;&#10;PŘÍPRAVA NA TEST.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712942335151</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="PROJECT #1 ZAČÁTEK TESTOVACÍCH DAT. &#10;&#10;&#10;PŘÍPRAVA NA TEST.">
+      <option name="closed" value="true" />
+      <created>1713193845181</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713193845181</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -105,6 +112,7 @@
     <MESSAGE value="ROZPRACOVÁNÍ ZÁKLADNÍCH TŘÍD V PROJEKTU." />
     <MESSAGE value="ROZPRACOVÁNÍ ZÁKLADNÍCH TŘÍD V PROJEKTU.&#10;&#10;Vytvořeny podmínky." />
     <MESSAGE value="PROJECT #1 PŘIPRAVENO NA TESTOVACÍ DATA&#10;&#10;&#10;Vytvořeny podmínky." />
-    <option name="LAST_COMMIT_MESSAGE" value="PROJECT #1 PŘIPRAVENO NA TESTOVACÍ DATA&#10;&#10;&#10;Vytvořeny podmínky." />
+    <MESSAGE value="PROJECT #1 ZAČÁTEK TESTOVACÍCH DAT. &#10;&#10;&#10;PŘÍPRAVA NA TEST." />
+    <option name="LAST_COMMIT_MESSAGE" value="PROJECT #1 ZAČÁTEK TESTOVACÍCH DAT. &#10;&#10;&#10;PŘÍPRAVA NA TEST." />
   </component>
 </project>

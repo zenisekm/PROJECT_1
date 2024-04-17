@@ -40,6 +40,13 @@ public class Order {
 
     }
 
+
+    public Order(Dish dish, int i, int id, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid, boolean isFinished, int tableNumber) {
+
+
+
+    }
+
     public Dish getDish() {
         return dish;
     }
@@ -158,7 +165,12 @@ public class Order {
     }
 
 
+    static Order createOrder(int id, int tableNumber, int dishId, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid, boolean isFinished) {
+        // Zde bys měl implementovat logiku pro nalezení konkrétního jídla podle jeho ID,
+        // ale pro účely testování přidám pouze základní hodnoty
+        Dish dish = new Dish("Dish" + dishId, dishId, 100, 15, "photo-url");
 
+        return new Order(dish, 2, id, orderedTime, fulfilmentTime, isPaid, isFinished, tableNumber);
     }
 
 
@@ -168,3 +180,6 @@ public class Order {
 
 
 
+
+
+    }
