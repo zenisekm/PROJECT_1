@@ -8,6 +8,7 @@ import java.util.Locale;
 
 public class Order {
 
+
     private ArrayList<Dish> orderedDishes;
 
 
@@ -128,15 +129,15 @@ public class Order {
     }
 
 
-       public String toString() {
-           return "Order{" +
-                   "dish=" + dish.getName() +
-                   ", quantity=" + quantity +
-                   ", orderedTime=" + orderedTime +
-                   ", fulfilmentTime=" + fulfilmentTime +
-                   ", isPaid=" + isPaid +
-                   '}';
-       }
+    public String toString() {
+        return "Order{" +
+                "dish=" + dish.getName() +
+                ", quantity=" + quantity +
+                ", orderedTime=" + orderedTime +
+                ", fulfilmentTime=" + fulfilmentTime +
+                ", isPaid=" + isPaid +
+                '}';
+    }
 
     public long getProcessingTimeInMinutes() {
         Duration duration = Duration.between(orderedTime, fulfilmentTime);
@@ -161,7 +162,7 @@ public class Order {
 
 
     public int getTableNumber() {
-       return tableNumber;
+        return tableNumber;
     }
 
 
@@ -176,10 +177,4 @@ public class Order {
 
 
 
-
-
-
-
-
-
-    }
+}

@@ -18,9 +18,18 @@ public class Dish {
         this.photoUrl = photoUrl;
     }
 
+
+    public Dish(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+
     public Dish(int id, String name, double price) {
 
     }
+
+
 
     public String getName() {
         return name;

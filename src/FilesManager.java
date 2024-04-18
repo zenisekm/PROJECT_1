@@ -1,10 +1,12 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FilesManager {
-
 
     private static final String DISHES_FILE = "dishes.txt";
     private static final String ORDERS_FILE = "orders";
@@ -33,6 +35,8 @@ public class FilesManager {
         }
     }
 
+
+
     private static void saveOrders(List<Order> orders) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ORDERS_FILE))) {
             for (Order order : orders) {
@@ -53,17 +57,21 @@ public class FilesManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                int id = Integer.parseInt(parts[0]);
-                String name = parts[1];
-                double price = Double.parseDouble(parts[2]);
-                dishes.add(new Dish(id, name, price));
+                if (parts.length == 2) { // Zkontrolujte, zda má řádek správný formát (název jídla, cena)
+                    String name = parts[0].trim(); // Získání názvu jídla a odstranění bílých znaků
+                    double price = Double.parseDouble(parts[1].trim()); // Získání ceny jídla a odstranění bílých znaků
+                    dishes.add(new Dish(name, price)); // Vytvoření nového jídla a přidání do seznamu
+                } else {
+                    throw new FileLoadException("Neplatný formát řádku v souboru dishes.txt: " + line);
+                }
             }
         } catch (IOException e) {
             throw new FileLoadException("Chyba při načítání seznamu jídel ze souboru: " + e.getMessage());
         }
     }
 
-    private static void loadOrders(List<Order> orders, List<Dish> dishes) throws FileLoadException {
+
+        private static void loadOrders(List<Order> orders, List<Dish> dishes) throws FileLoadException {
         try (BufferedReader reader = new BufferedReader(new FileReader(ORDERS_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -82,7 +90,7 @@ public class FilesManager {
     }
 
 
-    private static Dish findDishById(int id, List<Dish> dishes) {
+    public static Dish findDishById(int id, List<Dish> dishes) {
         for (Dish dish : dishes) {
             if (dish.getId() == id) {
                 return dish;
@@ -91,7 +99,7 @@ public class FilesManager {
         return null;
 
 
-}
+    }
 
     public static void loadInitialState(List<Dish> dishes, List<Order> orders) {
         try {
@@ -106,4 +114,3 @@ public class FilesManager {
 
 
 }
-

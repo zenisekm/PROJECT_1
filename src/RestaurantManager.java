@@ -8,8 +8,8 @@ public class RestaurantManager {
     private ArrayList<Order> orders;
 
 
-    public RestaurantManager(ArrayList<Order> orders) {
-        this.orders = orders;
+    public RestaurantManager() {
+        this.orders = new ArrayList<>();
     }
 
 
@@ -88,13 +88,30 @@ public class RestaurantManager {
         return output.toString();
     }
 
+    public double calculateTotalBillForTable(int tableNumber) {
+        double totalBill = 0;
+
+        // Projdi všechny objednávky
+        for (Order order : orders) {
+            // Pokud objednávka byla provedena u stolu s požadovaným číslem
+            if (order.getTableNumber() == tableNumber) {
+                // Projdi všechna objednaná jídla v této objednávce
+                for (Dish dish : order.getOrderedDishes()) {
+                    // Přičti cenu každého jídla k celkovému účtu
+                    totalBill += dish.getPrice() * order.getQuantity();
+                }
+            }
+        }
+
+        return totalBill;
+    }
 
 
+    public void addOrder(Order order) {
+        orders.add(order);
 
 
-
-
-
+    }
 }
 
 
