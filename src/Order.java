@@ -166,12 +166,12 @@ public class Order {
     }
 
 
-    static Order createOrder(int id, int tableNumber, int dishId, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid, boolean isFinished) {
-        // Zde bys měl implementovat logiku pro nalezení konkrétního jídla podle jeho ID,
-        // ale pro účely testování přidám pouze základní hodnoty
-        Dish dish = new Dish("Dish" + dishId, dishId, 100, 15, "photo-url");
-
-        return new Order(dish, 2, id, orderedTime, fulfilmentTime, isPaid, isFinished, tableNumber);
+    public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isFinished) {
+        // Zde můžeš provádět libovolné kontroly nebo validace, například zda je dish nebo tableNumber platný
+        // Pokud je vše v pořádku, vytvoř novou objednávku
+        LocalDateTime now = LocalDateTime.now(); // Aktuální čas
+        // Nastavení objednávky, případně další parametry jako isPaid, isFinished, atd.
+        return new Order(dish, id, quantity, now, null, false, false, tableNumber);
     }
 
 

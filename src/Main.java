@@ -18,22 +18,24 @@ public class Main {
 // ÚKOL 2
 
 
-        dishes.add(new Dish("Kuřecí řízek obalovaný",290));
-        dishes.add(new Dish("Hranolky",90));
-        dishes.add(new Dish("Pstruh na víně",350));
-        dishes.add(new Dish("Kofola",55));
+        dishes.add(new Dish(1,"Kuřecí řízek obalovaný",290));
+        dishes.add(new Dish(2,"Hranolky",90));
+        dishes.add(new Dish(3,"Pstruh na víně",350));
+        dishes.add(new Dish(4,"Kofola",55));
+
+        System.out.println(dishes);
 
 
-        LocalDateTime orderedTime15 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 20));
-
-        Order order1 = Order.createOrder(1, 15, 1, 2, orderedTime15, null, false, false);
-        Order order2 = Order.createOrder(2, 15, 2, 2, orderedTime15, null, false, false);
-        Order order3 = Order.createOrder(3, 15, 4, 2, orderedTime15, LocalDateTime.now(), false, false);
+        LocalDateTime orderedTime15 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 30));
+        Order order1 = Order.createOrder(1, 15, dishes.get(0), 2,false);
+        Order order2 = Order.createOrder(2, 15, dishes.get(1), 2,false);
+        Order order3 = Order.createOrder(3, 15, dishes.get(3), 2,true);
 
         LocalDateTime orderedTime2 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 40));
 
-        Order order4 = Order.createOrder(4, 2, 3, 1, orderedTime2, null, false, false);
-        Order order5 = Order.createOrder(5, 2, 2, 1, orderedTime2, null, false, false);
+        Order order4 = Order.createOrder(4, 2, dishes.get(2), 1, true);
+        Order order5 = Order.createOrder(5, 2, dishes.get(2), 1, false);
+
 
 // ÚKOL 3
 
@@ -60,6 +62,7 @@ public class Main {
 
         FilesManager.saveData(dishes, orders);
         System.out.println("Data byla úspěšně uložena do souborů.");
+
 
 
 

@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class FilesManager {
 
     private static final String DISHES_FILE = "dishes.txt";
-    private static final String ORDERS_FILE = "orders";
+    private static final String ORDERS_FILE = "orders.txt";
 
     private static final Logger logger = Logger.getLogger(FilesManager.class.getName());
 
@@ -28,7 +28,7 @@ public class FilesManager {
     private static void saveDishes(List<Dish> dishes) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(DISHES_FILE))) {
             for (Dish dish : dishes) {
-                writer.println(dish.getName() + "," + dish.getPrice());
+                writer.println(dish.getId() + "," + dish.getName() + "," + dish.getPrice());
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to save dishes from file", e);
@@ -57,10 +57,11 @@ public class FilesManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 2) { // Zkontrolujte, zda má řádek správný formát (název jídla, cena)
-                    String name = parts[0].trim(); // Získání názvu jídla a odstranění bílých znaků
-                    double price = Double.parseDouble(parts[1].trim()); // Získání ceny jídla a odstranění bílých znaků
-                    dishes.add(new Dish(name, price)); // Vytvoření nového jídla a přidání do seznamu
+                if (parts.length == 3) {
+                    int id = Integer.parseInt(parts[0].trim()); // Získání ID jídla a odstranění bílých znaků
+                    String name = parts[1].trim(); // Získání názvu jídla a odstranění bílých znaků
+                    double price = Double.parseDouble(parts[2].trim()); // Získání ceny jídla a odstranění bílých znaků
+                    dishes.add(new Dish(id, name, price)); // Vytvoření nového jídla a přidání do seznamu
                 } else {
                     throw new FileLoadException("Neplatný formát řádku v souboru dishes.txt: " + line);
                 }

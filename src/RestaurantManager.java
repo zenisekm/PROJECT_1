@@ -91,13 +91,13 @@ public class RestaurantManager {
     public double calculateTotalBillForTable(int tableNumber) {
         double totalBill = 0;
 
-        // Projdi všechny objednávky
+
         for (Order order : orders) {
-            // Pokud objednávka byla provedena u stolu s požadovaným číslem
+
             if (order.getTableNumber() == tableNumber) {
-                // Projdi všechna objednaná jídla v této objednávce
+
                 for (Dish dish : order.getOrderedDishes()) {
-                    // Přičti cenu každého jídla k celkovému účtu
+
                     totalBill += dish.getPrice() * order.getQuantity();
                 }
             }
