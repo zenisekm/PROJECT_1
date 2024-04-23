@@ -1,6 +1,8 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,11 +42,13 @@ public class FilesManager {
     private static void saveOrders(List<Order> orders) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ORDERS_FILE))) {
             for (Order order : orders) {
-
+                LocalDateTime orderedTime = order.getOrderedTime();
+                LocalDateTime fulfilmentTime = order.getFulfilmentTime();
                 writer.println(order.getId()
+                        + "," + order.getTableNumber() // Přidáme tableNumber
                         + "," + order.getQuantity()
-                        + "," + order.getOrderedTime()
-                        + "," + order.getFulfilmentTime()
+                        + "," + (orderedTime != null ? orderedTime.toEpochSecond(ZoneOffset.UTC) : "") // Pokud je čas objednání null, zapiš prázdný řetězec
+                        + "," + (fulfilmentTime != null ? fulfilmentTime.toEpochSecond(ZoneOffset.UTC) : "") // Pokud je čas splnění null, zapiš prázdný řetězec
                         + "," + order.isPaid());
             }
         } catch (IOException e) {
@@ -73,23 +77,30 @@ public class FilesManager {
     }
 
 
-        private static void loadOrders(List<Order> orders, List<Dish> dishes) throws FileLoadException {
+    private static void loadOrders(List<Order> orders, List<Dish> dishes) throws FileLoadException {
         try (BufferedReader reader = new BufferedReader(new FileReader(ORDERS_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                int dishId = Integer.parseInt(parts[0]);
-                int quantity = Integer.parseInt(parts[1]);
-                long orderedTime = Long.parseLong(parts[2]);
-                long fulfilmentTime = Long.parseLong(parts[3]);
-                boolean isPaid = Boolean.parseBoolean(parts[4]);
-                Dish dish = findDishById(dishId, dishes);
-                orders.add(new Order(dish, quantity, orderedTime, fulfilmentTime, isPaid));
+                if (!parts[0].isEmpty()) {
+                    int dishId = Integer.parseInt(parts[0].trim());
+                    int quantity = Integer.parseInt(parts[1].trim());
+                    long orderedTimeEpochSeconds = Long.parseLong(parts[2].trim());
+                    long fulfilmentTimeEpochSeconds = Long.parseLong(parts[3].trim());
+                    LocalDateTime orderedTime = LocalDateTime.ofEpochSecond(orderedTimeEpochSeconds, 0, ZoneOffset.UTC); // Převést sekundy na LocalDateTime
+                    LocalDateTime fulfilmentTime = LocalDateTime.ofEpochSecond(fulfilmentTimeEpochSeconds, 0, ZoneOffset.UTC); // Převést sekundy na LocalDateTime
+                    boolean isPaid = Boolean.parseBoolean(parts[4].trim());
+                    Dish dish = findDishById(dishId, dishes);
+                    orders.add(Order.createOrder(orders.size() + 1, 15, dish, quantity, isPaid, orderedTime)); // Přidat novou objednávku s časem objednání
+                } else {
+                    // Obsluha případu, kdy je řetězec prázdný
+                }
             }
         } catch (IOException e) {
             throw new FileLoadException("Chyba při načítání seznamu jídel ze souboru: " + e.getMessage());
         }
     }
+
 
 
     public static Dish findDishById(int id, List<Dish> dishes) {
@@ -113,6 +124,14 @@ public class FilesManager {
         }
     }
 
-
+    public static double getTotalBillForTable(List<Order> orders, int tableNumber) {
+        double totalBill = 0;
+        for (Order order : orders) {
+            if (order.getTableNumber() == tableNumber) { // Kontrola, zda objednávka je pro požadovaný stůl
+                totalBill += order.getDish().getPrice() * order.getQuantity(); // Sečíst cenu objednaných jídel
+            }
+        }
+        return totalBill;
+    }
 
 }

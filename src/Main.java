@@ -24,19 +24,26 @@ public class Main {
         dishes.add(new Dish(3,"Pstruh na víně",350));
         dishes.add(new Dish(4,"Kofola",55));
 
-        System.out.println(dishes);
+
+
+
+
 
 
         LocalDateTime orderedTime15 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 30));
-
-        Order order1 = Order.createOrder(1, 15, dishes.get(0), 2,false);
-        Order order2 = Order.createOrder(2, 15, dishes.get(1), 2,false);
-        Order order3 = Order.createOrder(3, 15, dishes.get(3), 2,true);
-
         LocalDateTime orderedTime2 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 40));
 
-        Order order4 = Order.createOrder(4, 2, dishes.get(2), 1, true);
-        Order order5 = Order.createOrder(5, 2, dishes.get(2), 1, false);
+
+        orders.add(Order.createOrder(1, 15, dishes.get(0), 2, false, orderedTime15));
+        orders.add(Order.createOrder(2, 15, dishes.get(1), 2, false, orderedTime15));
+        orders.add(Order.createOrder(3, 15, dishes.get(3), 2, true, orderedTime15));
+        orders.add(Order.createOrder(4, 2, dishes.get(2), 1, true, orderedTime2));
+        orders.add(Order.createOrder(5, 2, dishes.get(2), 1, false, orderedTime2));
+
+
+        for (Order order : orders) {
+            System.out.println(order);
+        }
 
 
 
@@ -46,27 +53,11 @@ public class Main {
 
         RestaurantManager restaurantManager = new RestaurantManager();
 
-        restaurantManager.addOrder(order1);
-        restaurantManager.addOrder(order2);
-        restaurantManager.addOrder(order3);
+
 
         int tableNumber = 15;
-        double totalBillForTable15 = restaurantManager.calculateTotalBillForTable(tableNumber);
-
+        double totalBillForTable15 = FilesManager.getTotalBillForTable(orders, tableNumber);
         System.out.println("Celková cena konzumace pro stůl číslo " + tableNumber + ": " + totalBillForTable15 + " Kč");
-
-
-
-        try {
-            FilesManager.loadData(dishes, orders);
-            System.out.println("Data byla úspěšně načtena ze souborů.");
-        } catch (FileLoadException e) {
-            System.err.println("Chyba při načítání dat ze souborů: " + e.getMessage());
-            return; //
-        }
-
-        FilesManager.saveData(dishes, orders);
-        System.out.println("Data byla úspěšně uložena do souborů.");
 
 
 

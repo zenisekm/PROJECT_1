@@ -2,11 +2,3 @@
 2,Hranolky,90.0
 3,Pstruh na víně,350.0
 4,Kofola,55.0
-1,Kuřecí řízek obalovaný,290.0
-2,Hranolky,90.0
-3,Pstruh na víně,350.0
-4,Kofola,55.0
-1,Kuřecí řízek obalovaný,290.0
-2,Hranolky,90.0
-3,Pstruh na víně,350.0
-4,Kofola,55.0

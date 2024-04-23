@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -166,13 +167,11 @@ public class Order {
     }
 
 
-    public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isFinished) {
-
-
-        LocalDateTime now = LocalDateTime.now(); // Aktuální čas
-
-        return new Order(dish, id, quantity, now, null, false, false, tableNumber);
+    public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isPaid, LocalDateTime orderedTime) {
+        return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, null, isPaid, false, tableNumber);
     }
+
+
 
 
 
