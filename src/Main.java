@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -27,6 +28,7 @@ public class Main {
 
 
         LocalDateTime orderedTime15 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 30));
+
         Order order1 = Order.createOrder(1, 15, dishes.get(0), 2,false);
         Order order2 = Order.createOrder(2, 15, dishes.get(1), 2,false);
         Order order3 = Order.createOrder(3, 15, dishes.get(3), 2,true);
@@ -35,6 +37,9 @@ public class Main {
 
         Order order4 = Order.createOrder(4, 2, dishes.get(2), 1, true);
         Order order5 = Order.createOrder(5, 2, dishes.get(2), 1, false);
+
+
+
 
 
 // ÚKOL 3

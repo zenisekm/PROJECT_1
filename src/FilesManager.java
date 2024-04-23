@@ -40,7 +40,8 @@ public class FilesManager {
     private static void saveOrders(List<Order> orders) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ORDERS_FILE))) {
             for (Order order : orders) {
-                writer.println(order.getDish().getId()
+
+                writer.println(order.getId()
                         + "," + order.getQuantity()
                         + "," + order.getOrderedTime()
                         + "," + order.getFulfilmentTime()
@@ -48,9 +49,9 @@ public class FilesManager {
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to save orders from file", e);
-
         }
     }
+
 
     private static void loadDishes(List<Dish> dishes) throws FileLoadException {
         try (BufferedReader reader = new BufferedReader(new FileReader(DISHES_FILE))) {
