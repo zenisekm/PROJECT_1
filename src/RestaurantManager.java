@@ -41,15 +41,24 @@ public class RestaurantManager {
     }
 
 
+
     public double calculateAverageProcessingTime() {
         if (orders.isEmpty()) {
             return 0;
         }
         long totalProcessingTime = 0;
+        int count = 0;
         for (Order order : orders) {
-            totalProcessingTime += order.getProcessingTimeInMinutes();
+            if (order.getFulfilmentTime() != null) {
+                totalProcessingTime += order.getProcessingTimeInMinutes();
+                count++;
+            }
         }
-        return (double) totalProcessingTime / orders.size();
+        if (count == 0) {
+            return 0;
+        } else {
+            return (double) totalProcessingTime / count;
+        }
     }
 
 
@@ -113,5 +122,4 @@ public class RestaurantManager {
 
     }
 }
-
 

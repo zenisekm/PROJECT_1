@@ -27,26 +27,26 @@ public class CookBook {
         }
     }
 
-   public  List<Dish> getAllDishes() {
+    public  List<Dish> getAllDishes() {
         return new ArrayList<>(dishes);
-   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 

@@ -42,13 +42,10 @@ public class FilesManager {
     private static void saveOrders(List<Order> orders) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ORDERS_FILE))) {
             for (Order order : orders) {
-                LocalDateTime orderedTime = order.getOrderedTime();
-                LocalDateTime fulfilmentTime = order.getFulfilmentTime();
-                writer.println(order.getId()
-                        + "," + order.getTableNumber() // Přidáme tableNumber
+                writer.println(order.getDish().getId()
                         + "," + order.getQuantity()
-                        + "," + (orderedTime != null ? orderedTime.toEpochSecond(ZoneOffset.UTC) : "") // Pokud je čas objednání null, zapiš prázdný řetězec
-                        + "," + (fulfilmentTime != null ? fulfilmentTime.toEpochSecond(ZoneOffset.UTC) : "") // Pokud je čas splnění null, zapiš prázdný řetězec
+                        + "," + order.getOrderedTime()
+                        + "," + order.getFulfilmentTime()
                         + "," + order.isPaid());
             }
         } catch (IOException e) {
@@ -57,16 +54,18 @@ public class FilesManager {
     }
 
 
+
+
     private static void loadDishes(List<Dish> dishes) throws FileLoadException {
         try (BufferedReader reader = new BufferedReader(new FileReader(DISHES_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 3) {
-                    int id = Integer.parseInt(parts[0].trim()); // Získání ID jídla a odstranění bílých znaků
-                    String name = parts[1].trim(); // Získání názvu jídla a odstranění bílých znaků
-                    double price = Double.parseDouble(parts[2].trim()); // Získání ceny jídla a odstranění bílých znaků
-                    dishes.add(new Dish(id, name, price)); // Vytvoření nového jídla a přidání do seznamu
+                    int id = Integer.parseInt(parts[0].trim());
+                    String name = parts[1].trim();
+                    double price = Double.parseDouble(parts[2].trim());
+                    dishes.add(new Dish(id, name, price));
                 } else {
                     throw new FileLoadException("Neplatný formát řádku v souboru dishes.txt: " + line);
                 }
@@ -87,13 +86,13 @@ public class FilesManager {
                     int quantity = Integer.parseInt(parts[1].trim());
                     long orderedTimeEpochSeconds = Long.parseLong(parts[2].trim());
                     long fulfilmentTimeEpochSeconds = Long.parseLong(parts[3].trim());
-                    LocalDateTime orderedTime = LocalDateTime.ofEpochSecond(orderedTimeEpochSeconds, 0, ZoneOffset.UTC); // Převést sekundy na LocalDateTime
-                    LocalDateTime fulfilmentTime = LocalDateTime.ofEpochSecond(fulfilmentTimeEpochSeconds, 0, ZoneOffset.UTC); // Převést sekundy na LocalDateTime
+                    LocalDateTime orderedTime = LocalDateTime.ofEpochSecond(orderedTimeEpochSeconds, 0, ZoneOffset.UTC);
+                    LocalDateTime fulfilmentTime = LocalDateTime.ofEpochSecond(fulfilmentTimeEpochSeconds, 0, ZoneOffset.UTC);
                     boolean isPaid = Boolean.parseBoolean(parts[4].trim());
                     Dish dish = findDishById(dishId, dishes);
-                    orders.add(Order.createOrder(orders.size() + 1, 15, dish, quantity, isPaid, orderedTime)); // Přidat novou objednávku s časem objednání
+                    orders.add(Order.createOrder(orders.size() + 1, 15, dish, quantity, isPaid, orderedTime));
                 } else {
-                    // Obsluha případu, kdy je řetězec prázdný
+
                 }
             }
         } catch (IOException e) {
@@ -127,8 +126,8 @@ public class FilesManager {
     public static double getTotalBillForTable(List<Order> orders, int tableNumber) {
         double totalBill = 0;
         for (Order order : orders) {
-            if (order.getTableNumber() == tableNumber) { // Kontrola, zda objednávka je pro požadovaný stůl
-                totalBill += order.getDish().getPrice() * order.getQuantity(); // Sečíst cenu objednaných jídel
+            if (order.getTableNumber() == tableNumber) {
+                totalBill += order.getDish().getPrice() * order.getQuantity();
             }
         }
         return totalBill;
