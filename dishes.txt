@@ -1,0 +1,81 @@
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0
+1,Kuřecí řízek obalovaný,290.0
+2,Hranolky,90.0
+3,Pstruh na víně,350.0
+4,Kofola,60.0
+5,Whiskey,180.0
+6,Panenka,260.0
+7,Losos se špenátem,315.0
+8,Smažený hermelín,195.0
+9,Sachr,150.0

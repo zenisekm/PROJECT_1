@@ -43,19 +43,15 @@ public class FilesManager {
     private static void saveOrders(List<Order> orders) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ORDERS_FILE))) {
             for (Order order : orders) {
-                String fulfilmentTimeStr = order.getFulfilmentTime() != null ? order.getFulfilmentTime().toString() : "";
-                writer.println(order.getId() + "," +
-                        order.getTableNumber() + "," +
-                        order.getDish().getId() + "," +
-                        order.getQuantity() + "," +
-                        order.isPaid() + "," +
-                        order.getOrderedTime() + "," +
-                        fulfilmentTimeStr);
+                String fulfilmentTimeStr = order.getFulfilmentTime() != null ? order.getFulfilmentTime().toString() : "null";
+                writer.println(order.getDish().getId() + "," + order.getQuantity() + "," + order.getOrderedTime() + "," + fulfilmentTimeStr + "," + order.isPaid());
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to save orders from file", e);
         }
     }
+
+
 
 
 

@@ -88,14 +88,14 @@ public class RestaurantManager {
 
         for (Order order : orders) {
             if (order.getTableNumber() == tableNumber) {
-                output.append("****\n");
-                output.append(order.getFormattedOrder());
-                output.append("******\n");
-            }
+
+                output.append(order.getFormattedOrderWithFulfilment());
+              }
         }
 
         return output.toString();
     }
+
 
     public double calculateTotalBillForTable(int tableNumber) {
         double totalBill = 0;

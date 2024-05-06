@@ -102,6 +102,7 @@ public class Main {
                 }
 
 
+                System.out.println(restaurantManager.exportOrdersForTable(15));
                     }
 
         }

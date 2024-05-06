@@ -150,15 +150,13 @@ public class Order {
     }
 
 
-    public String getFormattedOrder() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault());
-        StringBuilder formattedOrder = new StringBuilder();
+    public String getFormattedOrderWithFulfilment() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
-        formattedOrder.append(id).append(". ").append(dish.getName()).append(" ").append(quantity).append("x (").append(dish.getPrice() * quantity).append(" Kč):    ")
-                .append(orderedTime.format(formatter)).append("-").append(fulfilmentTime != null ? fulfilmentTime.format(formatter) : "").append("\t")
-                .append(isPaid ? "zaplaceno" : "").append("\n");
+        String paidString = isPaid() ? "zaplaceno" : "";
+        String fulfilmentTimeString = getFulfilmentTime() != null ? getFulfilmentTime().format(formatter) : "";
 
-        return formattedOrder.toString();
+        return String.format("%d. %s %dx (%.1f Kč): %s-%s %s\n", getId(), getDish().getName(), getQuantity(), getDish().getPrice() * getQuantity(), getOrderedTime().format(formatter), fulfilmentTimeString, paidString);
     }
 
 
@@ -168,8 +166,9 @@ public class Order {
 
 
     public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isPaid, LocalDateTime orderedTime, LocalDateTime fulfilmentTime) {
-        return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, null, isPaid, false, tableNumber);
+        return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, fulfilmentTime, isPaid, false, tableNumber);
     }
+
 
 
 
