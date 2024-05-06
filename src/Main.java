@@ -1,8 +1,8 @@
-import java.sql.SQLOutput;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +22,6 @@ public class Main {
                 }
 
 
-
 // ÚKOL 2
                 dishes.add(new Dish(1, "Kuřecí řízek obalovaný", 290));
                 dishes.add(new Dish(2, "Hranolky", 90));
@@ -39,14 +38,19 @@ public class Main {
                 LocalDateTime orderedTime2 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 55));
                 LocalDateTime orderedTime9 = LocalDateTime.of(LocalDate.now(), LocalTime.of(17, 3));
 
+                LocalDateTime fulfilmentTime15 = LocalDateTime.of(LocalDate.now(), LocalTime.of(16, 0));
+                LocalDateTime fulfilmentTime2 = LocalDateTime.of(LocalDate.now(), LocalTime.of(16, 30));
+                LocalDateTime fulfilmentTime9 = LocalDateTime.of(LocalDate.now(), LocalTime.of(17, 40));
 
-                Order order1 = Order.createOrder(1, 15, dishes.get(0), 2, false, orderedTime15);
-                Order order2 = Order.createOrder(2, 15, dishes.get(1), 2, false, orderedTime15);
-                Order order3 = Order.createOrder(3, 15, dishes.get(3), 2, true, orderedTime15);
-                Order order4 = Order.createOrder(4, 2, dishes.get(5), 2, false, orderedTime2);
-                Order order5 = Order.createOrder(5, 9, dishes.get(6), 1, true, orderedTime9);
-                Order order6 = Order.createOrder(6, 9, dishes.get(4), 1, true, orderedTime9);
-                Order order7 = Order.createOrder(7, 9, dishes.get(2), 2, false, orderedTime9);
+
+
+                Order order1 = Order.createOrder(1, 15, dishes.get(0), 2, false, orderedTime15, fulfilmentTime15);
+                Order order2 = Order.createOrder(2, 15, dishes.get(1), 2, false, orderedTime15, fulfilmentTime15);
+                Order order3 = Order.createOrder(3, 15, dishes.get(3), 2, true, orderedTime15, fulfilmentTime15);
+                Order order4 = Order.createOrder(4, 2, dishes.get(5), 2, false, orderedTime2, fulfilmentTime2);
+                Order order5 = Order.createOrder(5, 9, dishes.get(6), 1, true, orderedTime9, fulfilmentTime9);
+                Order order6 = Order.createOrder(6, 9, dishes.get(4), 1, true, orderedTime9, fulfilmentTime9);
+                Order order7 = Order.createOrder(7, 9, dishes.get(2), 2, false, orderedTime9, fulfilmentTime9);
 
 
                 RestaurantManager restaurantManager = new RestaurantManager();
@@ -70,7 +74,6 @@ public class Main {
                 System.out.println("Celková cena konzumace pro stůl číslo " + tableNumber + ": " + totalBillForTable15 + " Kč");
 
 
-
                 System.out.println(" ");
                 System.out.println(" ");
                 System.out.println(" ");
@@ -78,16 +81,14 @@ public class Main {
                 System.out.println(" ");
 
 
-
- // ÚKOL 4
+                // ÚKOL 4
 
 
                 int openOrdersCount = restaurantManager.getOpenOrdersCount();
                 System.out.println("Počet otevřených objednávek: " + openOrdersCount);
 
-                // serazeni
-
                 restaurantManager.sortOrdersByTime();
+
 
                 double averageProcessingTime = restaurantManager.calculateAverageProcessingTime();
                 System.out.println("Průměrná doba zpracování objednávek: " + averageProcessingTime + " minut");
@@ -101,7 +102,6 @@ public class Main {
                 }
 
 
+                    }
 
         }
-
-}

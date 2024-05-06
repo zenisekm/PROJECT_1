@@ -1,9 +1,10 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
+
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
+
+
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,11 +43,14 @@ public class FilesManager {
     private static void saveOrders(List<Order> orders) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ORDERS_FILE))) {
             for (Order order : orders) {
-                writer.println(order.getDish().getId()
-                        + "," + order.getQuantity()
-                        + "," + order.getOrderedTime()
-                        + "," + order.getFulfilmentTime()
-                        + "," + order.isPaid());
+                String fulfilmentTimeStr = order.getFulfilmentTime() != null ? order.getFulfilmentTime().toString() : "";
+                writer.println(order.getId() + "," +
+                        order.getTableNumber() + "," +
+                        order.getDish().getId() + "," +
+                        order.getQuantity() + "," +
+                        order.isPaid() + "," +
+                        order.getOrderedTime() + "," +
+                        fulfilmentTimeStr);
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to save orders from file", e);
@@ -80,25 +84,34 @@ public class FilesManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(ORDERS_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
+                if (line.isEmpty()) {
+                    continue;
+                }
                 String[] parts = line.split(",");
-                if (!parts[0].isEmpty()) {
+                if (parts.length < 4) {
+                    throw new FileLoadException("Neplatný formát řádku v souboru orders.txt: " + line);
+                }
+
+                try {
                     int dishId = Integer.parseInt(parts[0].trim());
                     int quantity = Integer.parseInt(parts[1].trim());
-                    long orderedTimeEpochSeconds = Long.parseLong(parts[2].trim());
-                    long fulfilmentTimeEpochSeconds = Long.parseLong(parts[3].trim());
-                    LocalDateTime orderedTime = LocalDateTime.ofEpochSecond(orderedTimeEpochSeconds, 0, ZoneOffset.UTC);
-                    LocalDateTime fulfilmentTime = LocalDateTime.ofEpochSecond(fulfilmentTimeEpochSeconds, 0, ZoneOffset.UTC);
-                    boolean isPaid = Boolean.parseBoolean(parts[4].trim());
+                    boolean isPaid = Boolean.parseBoolean(parts[3].trim());
+                    LocalDateTime orderedTime = LocalDateTime.parse(parts[2].trim());
                     Dish dish = findDishById(dishId, dishes);
-                    orders.add(Order.createOrder(orders.size() + 1, 15, dish, quantity, isPaid, orderedTime));
-                } else {
+                    LocalDateTime fulfilmentTime = parts.length > 4 ? LocalDateTime.parse(parts[4].trim()) : null;
+                    orders.add(Order.createOrder(orders.size() + 1, 15, dish, quantity, isPaid, orderedTime, fulfilmentTime));
+                } catch (NumberFormatException | IndexOutOfBoundsException | DateTimeParseException e) {
 
+                    throw new FileLoadException("Neplatný formát řádku v souboru orders.txt: " + line);
                 }
             }
         } catch (IOException e) {
             throw new FileLoadException("Chyba při načítání seznamu jídel ze souboru: " + e.getMessage());
         }
     }
+
+
+
 
 
 
