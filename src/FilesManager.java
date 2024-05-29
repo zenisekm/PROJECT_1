@@ -95,7 +95,7 @@ public class FilesManager {
                     LocalDateTime orderedTime = LocalDateTime.parse(parts[2].trim());
                     Dish dish = findDishById(dishId, dishes);
                     LocalDateTime fulfilmentTime = parts.length > 4 ? LocalDateTime.parse(parts[4].trim()) : null;
-                    orders.add(Order.createOrder(orders.size() + 1, 15, dish, quantity, isPaid, orderedTime, fulfilmentTime));
+                    orders.add(Order.createOrder(orders.size() + 1, 15, dishId, quantity, orderedTime, fulfilmentTime, isPaid, false, dishes));
                 } catch (NumberFormatException | IndexOutOfBoundsException | DateTimeParseException e) {
 
                     throw new FileLoadException("Neplatný formát řádku v souboru orders.txt: " + line);
@@ -118,6 +118,9 @@ public class FilesManager {
             }
         }
         return null;
+
+
+
 
 
     }

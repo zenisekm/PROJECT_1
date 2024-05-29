@@ -44,13 +44,14 @@ public class Main {
 
 
 
-                Order order1 = Order.createOrder(1, 15, dishes.get(0), 2, false, orderedTime15, fulfilmentTime15);
-                Order order2 = Order.createOrder(2, 15, dishes.get(1), 2, false, orderedTime15, fulfilmentTime15);
-                Order order3 = Order.createOrder(3, 15, dishes.get(3), 2, true, orderedTime15, fulfilmentTime15);
-                Order order4 = Order.createOrder(4, 2, dishes.get(5), 2, false, orderedTime2, fulfilmentTime2);
-                Order order5 = Order.createOrder(5, 9, dishes.get(6), 1, true, orderedTime9, fulfilmentTime9);
-                Order order6 = Order.createOrder(6, 9, dishes.get(4), 1, true, orderedTime9, fulfilmentTime9);
-                Order order7 = Order.createOrder(7, 9, dishes.get(2), 2, false, orderedTime9, fulfilmentTime9);
+                Order order1 = Order.createOrder(1, 15, 1, 2, orderedTime15, fulfilmentTime15, false, false, dishes);
+                Order order2 = Order.createOrder(2, 15, 2, 2, orderedTime15, fulfilmentTime15, false, false, dishes);
+                Order order3 = Order.createOrder(3, 15, 4, 2, orderedTime15, fulfilmentTime15, true, false, dishes);
+                Order order4 = Order.createOrder(4, 2, 3, 2, orderedTime2, fulfilmentTime2, false, false, dishes);
+                Order order5 = Order.createOrder(5, 9, 1, 1, orderedTime9, fulfilmentTime9, true, false, dishes);
+                Order order6 = Order.createOrder(6, 9, 2, 1, orderedTime9, fulfilmentTime9, true, false, dishes);
+                Order order7 = Order.createOrder(7, 9, 3, 2, orderedTime9, fulfilmentTime9, false, false, dishes);
+
 
 
                 RestaurantManager restaurantManager = new RestaurantManager();
@@ -76,9 +77,7 @@ public class Main {
 
                 System.out.println(" ");
                 System.out.println(" ");
-                System.out.println(" ");
-                System.out.println(" ");
-                System.out.println(" ");
+
 
 
                 // ÚKOL 4

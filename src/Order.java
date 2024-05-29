@@ -165,11 +165,36 @@ public class Order {
     }
 
 
-    public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isPaid, LocalDateTime orderedTime, LocalDateTime fulfilmentTime) {
-        return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, fulfilmentTime, isPaid, false, tableNumber);
+ //    public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isPaid, LocalDateTime orderedTime, LocalDateTime fulfilmentTime) {
+ //        return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, fulfilmentTime, isPaid, false, tableNumber);
+ //    }
+
+
+ //  public static Order createOrder(int id, int tableNumber, Dish dish, int quantity, boolean isPaid, LocalDateTime orderedTime, LocalDateTime fulfilmentTime) {
+ //      return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, fulfilmentTime, isPaid, false, tableNumber);
+ //  }
+
+
+
+
+
+ // public static Order createOrder(int id, int tableNumber, int dishId, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid, boolean isFinished, List<Dish> dishes) {
+ //     Dish dish = FilesManager.findDishById(dishId, dishes);
+ //     if (dish == null) {
+ //         throw new IllegalArgumentException("Dish with ID " + dishId + " not found");
+ //     }
+ //     return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, fulfilmentTime, isPaid, isFinished, tableNumber);
+ // }
+
+
+
+    public static Order createOrder(int id, int tableNumber, int dishId, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean isPaid, boolean isFinished, List<Dish> dishes) {
+        Dish dish = FilesManager.findDishById(dishId, dishes);
+        if (dish == null) {
+            throw new IllegalArgumentException("Dish with ID " + dishId + " not found");
+        }
+        return new Order(new ArrayList<>(Collections.singletonList(dish)), dish, id, quantity, orderedTime, fulfilmentTime, isPaid, isFinished, tableNumber);
     }
-
-
 
 
 

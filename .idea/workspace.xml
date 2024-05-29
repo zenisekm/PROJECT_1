@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a1f5cf1-bdcb-4abe-95d2-d58bf1bcdc42" name="Changes" comment="Úprava metod ve třídě Main, Dish &amp; Order. &#10;&#10;&#10;Zkouška nových metod &amp; vytvoření objednávek.">
+    <list default="true" id="3a1f5cf1-bdcb-4abe-95d2-d58bf1bcdc42" name="Changes" comment="Připraveno na kontrolu, pouze nefunguje ukládání objednávek do souboru.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dishes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dishes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders.txt" beforeDir="false" afterPath="$PROJECT_DIR$/orders.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order.java" afterDir="false" />
@@ -148,7 +147,39 @@
       <option name="project" value="LOCAL" />
       <updated>1713898650752</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Testování dat. &#10;&#10;&#10;Úspěšně sečteny objednávky pro stůl č. 15.">
+      <option name="closed" value="true" />
+      <created>1713901691875</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713901691875</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Ověřování dat. &#10;&#10;&#10;Použití všech připravených metod pro management.">
+      <option name="closed" value="true" />
+      <created>1713980655797</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713980655797</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Připraveno na kontrolu.">
+      <option name="closed" value="true" />
+      <created>1715025812708</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715025812708</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Připraveno na kontrolu, pouze nefunguje ukládání objednávek do souboru.">
+      <option name="closed" value="true" />
+      <created>1715026996594</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715026996594</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -160,6 +191,10 @@
     <MESSAGE value="PROJECT #1 ZAČÁTEK TESTOVACÍCH DAT. &#10;&#10;&#10;testovací data vytvořeny." />
     <MESSAGE value="PROJECT #1 ZAČÁTEK TESTOVACÍCH DAT. &#10;&#10;&#10;První testování 1 a 2 úkol." />
     <MESSAGE value="Úprava metod ve třídě Main, Dish &amp; Order. &#10;&#10;&#10;Zkouška nových metod &amp; vytvoření objednávek." />
-    <option name="LAST_COMMIT_MESSAGE" value="Úprava metod ve třídě Main, Dish &amp; Order. &#10;&#10;&#10;Zkouška nových metod &amp; vytvoření objednávek." />
+    <MESSAGE value="Testování dat. &#10;&#10;&#10;Úspěšně sečteny objednávky pro stůl č. 15." />
+    <MESSAGE value="Ověřování dat. &#10;&#10;&#10;Použití všech připravených metod pro management." />
+    <MESSAGE value="Připraveno na kontrolu." />
+    <MESSAGE value="Připraveno na kontrolu, pouze nefunguje ukládání objednávek do souboru." />
+    <option name="LAST_COMMIT_MESSAGE" value="Připraveno na kontrolu, pouze nefunguje ukládání objednávek do souboru." />
   </component>
 </project>
