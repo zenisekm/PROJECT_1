@@ -7,7 +7,8 @@
     <list default="true" id="3a1f5cf1-bdcb-4abe-95d2-d58bf1bcdc42" name="Changes" comment="Připraveno na kontrolu, pouze nefunguje ukládání objednávek do souboru.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dishes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dishes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders.txt" beforeDir="false" afterPath="$PROJECT_DIR$/orders.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order.java" afterDir="false" />
     </list>
@@ -179,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715026996594</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Připraveno na kontrolu, pouze nefunguje ukládání objednávek do souboru.">
+      <option name="closed" value="true" />
+      <created>1717009424262</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717009424262</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

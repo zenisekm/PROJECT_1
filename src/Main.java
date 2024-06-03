@@ -64,6 +64,14 @@ public class Main {
                 restaurantManager.addOrder(order6);
                 restaurantManager.addOrder(order7);
 
+                orders.add(order1);
+                orders.add(order2);
+                orders.add(order3);
+                orders.add(order4);
+                orders.add(order5);
+                orders.add(order6);
+                orders.add(order7);
+
                 FilesManager.saveData(dishes, orders);
                 System.out.println("Data byla úspěšně uložena do souborů.");
 
@@ -79,8 +87,7 @@ public class Main {
                 System.out.println(" ");
 
 
-
-                // ÚKOL 4
+ // ÚKOL 4
 
 
                 int openOrdersCount = restaurantManager.getOpenOrdersCount();
