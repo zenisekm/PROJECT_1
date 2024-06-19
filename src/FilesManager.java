@@ -91,13 +91,12 @@ public class FilesManager {
                 try {
                     int dishId = Integer.parseInt(parts[0].trim());
                     int quantity = Integer.parseInt(parts[1].trim());
-                    boolean isPaid = Boolean.parseBoolean(parts[3].trim());
                     LocalDateTime orderedTime = LocalDateTime.parse(parts[2].trim());
+                    LocalDateTime fulfilmentTime = parts.length > 3 && !parts[3].trim().equals("null") ? LocalDateTime.parse(parts[3].trim()) : null;
+                    boolean isPaid = Boolean.parseBoolean(parts[4].trim());
                     Dish dish = findDishById(dishId, dishes);
-                    LocalDateTime fulfilmentTime = parts.length > 4 ? LocalDateTime.parse(parts[4].trim()) : null;
                     orders.add(Order.createOrder(orders.size() + 1, 15, dishId, quantity, orderedTime, fulfilmentTime, isPaid, false, dishes));
                 } catch (NumberFormatException | IndexOutOfBoundsException | DateTimeParseException e) {
-
                     throw new FileLoadException("Neplatný formát řádku v souboru orders.txt: " + line);
                 }
             }
@@ -105,6 +104,7 @@ public class FilesManager {
             throw new FileLoadException("Chyba při načítání seznamu jídel ze souboru: " + e.getMessage());
         }
     }
+
 
 
 
